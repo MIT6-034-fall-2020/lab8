@@ -23,7 +23,10 @@ def norm(v):
 
 def positiveness(svm, point):
     """Computes the expression (w dot x + b) for the given Point x."""
-    raise NotImplementedError
+    w = svm.w
+    b = svm.b
+    x = point.coords
+    return dot_product(w, x) + b
 
 def classify(svm, point):
     """Uses the given SVM to classify a Point. Assume that the point's true
