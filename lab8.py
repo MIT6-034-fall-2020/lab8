@@ -3,7 +3,7 @@
 
 from svm_data import *
 from functools import reduce
-
+import math
 
 #### Part 1: Vector Math #######################################################
 
@@ -11,12 +11,12 @@ def dot_product(u, v):
     """Computes the dot product of two vectors u and v, each represented 
     as a tuple or list of coordinates. Assume the two vectors are the
     same length."""
-    raise NotImplementedError
+    return sum([i[0]*i[1] for i in list(zip(u,v))])
 
 def norm(v):
     """Computes the norm (length) of a vector v, represented 
     as a tuple or list of coords."""
-    raise NotImplementedError
+    return math.sqrt(dot_product(v,v))
 
 
 #### Part 2: Using the SVM Boundary Equations ##################################
