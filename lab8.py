@@ -41,7 +41,9 @@ def classify(svm, point):
 
 def margin_width(svm):
     """Calculate margin width based on the current boundary."""
-    raise NotImplementedError
+    w = svm.w
+    norm_w = norm(w)
+    return 2 / norm_w
 
 def check_gutter_constraint(svm):
     """Returns the set of training points that violate one or both conditions:
