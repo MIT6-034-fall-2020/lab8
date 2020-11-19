@@ -32,7 +32,12 @@ def classify(svm, point):
     """Uses the given SVM to classify a Point. Assume that the point's true
     classification is unknown.
     Returns +1 or -1, or 0 if point is on boundary."""
-    raise NotImplementedError
+    value = positiveness(svm, point)
+    
+    if value == 0:
+        return 0
+
+    return (1 if value > 0 else -1)
 
 def margin_width(svm):
     """Calculate margin width based on the current boundary."""
