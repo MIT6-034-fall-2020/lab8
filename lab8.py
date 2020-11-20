@@ -175,37 +175,37 @@ def update_svm_from_alphas(svm):
 
 #### Part 6: Multiple Choice ###################################################
 
-ANSWER_1 = None
-ANSWER_2 = None
-ANSWER_3 = None
-ANSWER_4 = None
+ANSWER_1 = 11
+ANSWER_2 = 6
+ANSWER_3 = 3
+ANSWER_4 = 2
 
-ANSWER_5 = None
-ANSWER_6 = None
-ANSWER_7 = None
-ANSWER_8 = None
-ANSWER_9 = None
-ANSWER_10 = None
+ANSWER_5 = ['A', 'D']
+ANSWER_6 = ['A', 'B', 'D']
+ANSWER_7 = ['A', 'B', 'D']
+ANSWER_8 = []
+ANSWER_9 = ['A', 'B', 'D']
+ANSWER_10 = ['A', 'B', 'D']
 
-ANSWER_11 = None
-ANSWER_12 = None
-ANSWER_13 = None
-ANSWER_14 = None
-ANSWER_15 = None
-ANSWER_16 = None
+ANSWER_11 = False
+ANSWER_12 = True
+ANSWER_13 = False
+ANSWER_14 = False
+ANSWER_15 = False
+ANSWER_16 = True
 
-ANSWER_17 = None
-ANSWER_18 = None
-ANSWER_19 = None
+ANSWER_17 = [1, 3, 6, 8]
+ANSWER_18 = [1, 2, 4, 5, 6, 7, 8]
+ANSWER_19 = [1, 2, 4, 5, 6, 7, 8]
 
-ANSWER_20 = None
+ANSWER_20 = 6
 
 
 #### SURVEY ####################################################################
 
-NAME = None
-COLLABORATORS = None
-HOW_MANY_HOURS_THIS_LAB_TOOK = None
-WHAT_I_FOUND_INTERESTING = None
-WHAT_I_FOUND_BORING = None
-SUGGESTIONS = None
+NAME = "Nabib Ahmed"
+COLLABORATORS = "None"
+HOW_MANY_HOURS_THIS_LAB_TOOK = 6
+WHAT_I_FOUND_INTERESTING = "The graphics"
+WHAT_I_FOUND_BORING = "Nothing; fun lab"
+SUGGESTIONS = "Great instructions!"
