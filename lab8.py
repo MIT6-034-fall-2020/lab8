@@ -111,7 +111,7 @@ def check_alpha_equations(svm):
         return False
 
     # equation 5
-    eq5 = training_points[0]
+    eq5 = scalar_mult(training_points[0].classification * training_points[0].alpha, training_points[0].coords)
     for i in range(1, len(training_points)):
         point = training_points[i]
         eq5 = vector_add(eq5, scalar_mult(point.classification * point.alpha, point.coords))
@@ -142,7 +142,35 @@ def misclassified_training_points(svm):
 def update_svm_from_alphas(svm):
     """Given an SVM with training data and alpha values, use alpha values to
     update the SVM's support vectors, w, and b. Return the updated SVM."""
-    raise NotImplementedError
+    training_points = svm.training_points
+    
+    # no training points
+    if training_points == []:
+        return svm
+
+    # calculating w
+    w = scalar_mult(training_points[0].classification * training_points[0].alpha, training_points[0].coords)
+    for i in range(1, len(training_points)):
+        point = training_points[i]
+        w = vector_add(w, scalar_mult(point.classification * point.alpha, point.coords))
+    svm.w = w
+
+    # setting the support vectors and b
+    support_vectors = []
+    b_negative_support = []
+    b_positive_support = []
+    for point in training_points:
+        if point.alpha > 0:
+            support_vectors.append(point)
+            if point.classification < 0:
+                b_negative_support.append(-1 - dot_product(w, point.coords))
+            elif point.classification > 0:
+                b_positive_support.append(1 - dot_product(w, point.coords))
+    svm.b = (min(b_negative_support) + max(b_positive_support))/2
+    svm.support_vectors = support_vectors
+
+    return svm
+
 
 
 #### Part 6: Multiple Choice ###################################################
