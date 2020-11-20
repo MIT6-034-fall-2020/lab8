@@ -127,7 +127,14 @@ def check_alpha_equations(svm):
 def misclassified_training_points(svm):
     """Returns the set of training points that are classified incorrectly
     using the current decision boundary."""
-    raise NotImplementedError
+    training_points = svm.training_points
+    bad_points = set()
+
+    for point in training_points:
+        if point.classification != classify(svm, point):
+            bad_points.add(point)
+    
+    return bad_points
 
 
 #### Part 5: Training an SVM ###################################################
