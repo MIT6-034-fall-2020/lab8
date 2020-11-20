@@ -77,7 +77,22 @@ def check_alpha_signs(svm):
         * all support vectors have alpha > 0
     Assumes that the SVM has support vectors assigned, and that all training
     points have alpha values assigned."""
-    raise NotImplementedError
+    support_vectors = svm.support_vectors
+    training_points = svm.training_points
+
+    bad_points = set()
+
+    for point in training_points:
+        # support vectors
+        if point in support_vectors:
+            if not point.alpha > 0:
+                bad_points.add(point)
+        # non support vectors
+        else:
+            if point.alpha != 0:
+                bad_points.add(point)
+        
+    return bad_points
 
 def check_alpha_equations(svm):
     """Returns True if both Lagrange-multiplier equations are satisfied,
