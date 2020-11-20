@@ -98,7 +98,28 @@ def check_alpha_equations(svm):
     """Returns True if both Lagrange-multiplier equations are satisfied,
     otherwise False. Assumes that the SVM has support vectors assigned, and
     that all training points have alpha values assigned."""
-    raise NotImplementedError
+    training_points = svm.training_points
+    w = svm.w
+
+    # no training points
+    if training_points == []:
+        return True 
+
+    # equation 4
+    eq4 = sum(point.classification * point.alpha for point in training_points)
+    if eq4 != 0:
+        return False
+
+    # equation 5
+    eq5 = training_points[0]
+    for i in range(1, len(training_points)):
+        point = training_points[i]
+        eq5 = vector_add(eq5, scalar_mult(point.classification * point.alpha, point.coords))
+    
+    if eq5 != w:
+        return False
+
+    return True
 
 
 #### Part 4: Evaluating Accuracy ###############################################
