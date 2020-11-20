@@ -50,7 +50,23 @@ def check_gutter_constraint(svm):
         * gutter constraint (positiveness == classification, for support vectors)
         * training points must not be between the gutters
     Assumes that the SVM has support vectors assigned."""
-    raise NotImplementedError
+    support_vectors = svm.support_vectors
+    training_points = svm.training_points
+
+    bad_points = set()
+    
+    # checking gutter constraint (positiveness == classification)
+    for point in support_vectors:
+        if positiveness(svm, point) != point.classification:
+            bad_points.add(point)
+
+    # check training points not between gutter 
+    # positiveness will be less than 1 if not in the gutter
+    for point in training_points:
+        if abs(positiveness(svm, point)) < 1:
+            bad_points.add(point)
+        
+    return bad_points
 
 
 #### Part 3: Supportiveness ####################################################
